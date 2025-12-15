@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-fastapi-deployment
+  labels:
+    app: devops-fastapi
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: devops-fastapi
+  template:
+    metadata:
+      labels:
+        app: devops-fastapi
+    spec:
+      containers:
+        - name: fastapi-app
+          image: swati-devops/devops-fastapi-project:latest   # update with your DockerHub username
+          ports:
+            - containerPort: 8000
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8000
+            initialDelaySeconds: 10
+            periodSeconds: 20

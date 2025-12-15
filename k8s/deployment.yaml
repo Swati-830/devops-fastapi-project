@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: fastapi-app
-          image: swati-devops/devops-fastapi-project:latest   # update with your DockerHub username
+          image: swati9455/devops-fastapi-project:latest   # update with your DockerHub username
           ports:
             - containerPort: 8000
           readinessProbe:
@@ -31,3 +31,4 @@ spec:
               port: 8000
             initialDelaySeconds: 10
             periodSeconds: 20
+

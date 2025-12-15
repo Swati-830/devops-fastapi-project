@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException
-from .models import items
+from models import items
 
 router = APIRouter()
 
@@ -8,15 +8,8 @@ def get_items():
     return items
 
 @router.get("/items/{item_id}")
-def get_item(item_id: int):
-    for item in items:
-        if item["id"] == item_id:
-            return item
-    raise HTTPException(status_code=404, detail="Item not found")
+def get_single_item(item_id: int):
+    if item_id not in items:
+        raise HTTPException(status_code=404, detail="Item not found")
+    return items[item_id]
 
-@router.post("/items")
-def add_item(payload: dict):
-    new_id = len(items) + 1
-    payload["id"] = new_id
-    items.append(payload)
-    return payload

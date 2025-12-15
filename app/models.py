@@ -1,5 +1,6 @@
-items = [
-    {"id": 1, "name": "Laptop", "price": 65000},
-    {"id": 2, "name": "Mobile", "price": 25000},
-    {"id": 3, "name": "Keyboard", "price": 1500},
-]
+items = {
+    1: {"id": 1, "name": "Laptop"},
+    2: {"id": 2, "name": "Mobile"},
+    3: {"id": 3, "name": "Headphones"}
+}
+

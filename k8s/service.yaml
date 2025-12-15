@@ -1,14 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: devops-fastapi-service
+  name: fastapi-service
 spec:
   type: NodePort
   selector:
-    app: devops-fastapi
+    app: fastapi-app
   ports:
-    - protocol: TCP
-      port: 80
+    - port: 80
       targetPort: 8000
-      nodePort: 30123
+      nodePort: 30007
 
